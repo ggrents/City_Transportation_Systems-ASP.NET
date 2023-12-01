@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\City_Transportation_Systems.props" />
+</Project>
