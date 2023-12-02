@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using City_Transportation_Systems.Data;
+using City_Transportation_Systems.Interfaces;
+using City_Transportation_Systems.Repository;
 
 namespace City_Transportation_Systems
 {
@@ -9,19 +11,13 @@ namespace City_Transportation_Systems
         {
             var builder = WebApplication.CreateBuilder(args);
 
-           // string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-           // builder.Services.AddDbContext<CtsDbContext>(options => options.UseSqlServer(connection));
-
-
+          
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddControllers();
+            builder.Services.AddSwaggerGen();  
             builder.Services.AddDbContext<CtsDbContext>();
-            //builder.Services.AddDbContext<CtsDbContext>(options =>
-            //{
-            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            //});
+            builder.Services.AddScoped<IBusRepository, BusRepository>();            
+            
             var app = builder.Build();
 
            

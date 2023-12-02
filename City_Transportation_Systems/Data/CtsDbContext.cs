@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using City_Transportation_Systems.Models;
+using Route = City_Transportation_Systems.Models.Route;
 
 namespace City_Transportation_Systems.Data
 {
@@ -16,7 +17,7 @@ namespace City_Transportation_Systems.Data
         public DbSet<Bus> Buses { get; set; }
         public DbSet<Station> Stations { get; set; }
         public DbSet<Driver> Drivers { get; set; }
-        public DbSet<Models.Route> Routes { get; set; }
+        public DbSet<Route> Routes { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
