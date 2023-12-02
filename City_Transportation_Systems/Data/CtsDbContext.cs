@@ -21,7 +21,7 @@ namespace City_Transportation_Systems.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
+            base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=CTS_DB;Trusted_Connection=True;TrustServerCertificate=true;");
         }
 

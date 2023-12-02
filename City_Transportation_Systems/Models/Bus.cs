@@ -8,7 +8,10 @@
 
         public int Capacity { get; set; }
 
-        public int Route_Id { get; set; }
+        public int RouteId { get; set; }
+        
         public Route? Route { get; set; }
+
+       
     }
 }

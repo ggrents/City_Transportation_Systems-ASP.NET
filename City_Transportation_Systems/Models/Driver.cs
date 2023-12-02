@@ -8,7 +8,8 @@
 
         public string? Last_name { get; set; }
 
-        public int Bus_Id { get; set; }
+        public int BusId { get; set; }
         
+        public Bus? Bus {  get; set; }
     }
 }

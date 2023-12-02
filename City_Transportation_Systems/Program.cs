@@ -18,10 +18,10 @@ namespace City_Transportation_Systems
             builder.Services.AddSwaggerGen();
             builder.Services.AddControllers();
             builder.Services.AddDbContext<CtsDbContext>();
-            builder.Services.AddDbContext<CtsDbContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+            //builder.Services.AddDbContext<CtsDbContext>(options =>
+            //{
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            //});
             var app = builder.Build();
 
            
