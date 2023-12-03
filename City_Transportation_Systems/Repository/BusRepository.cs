@@ -17,15 +17,13 @@ namespace City_Transportation_Systems.Repository
         {
             
             await _db.AddAsync(bus);
-            var isSaved = await _db.SaveChangesAsync();
-            return isSaved > 0 ;
+            return await SaveChanges();
         }
 
         public async Task<bool> DeleteBusAsync(Bus bus)
         {
             _db.Remove(bus);
-            var isSaved = await _db.SaveChangesAsync();
-            return isSaved > 0;
+            return await SaveChanges();
         }
 
         public async Task<IEnumerable<Bus>> GetAllBusesAsync()
@@ -50,6 +48,11 @@ namespace City_Transportation_Systems.Repository
         public async Task<bool> UpdateBusAsync(Bus bus)
         {
             _db.Update(bus);
+            return await SaveChanges();
+        }
+
+        private async Task<bool> SaveChanges()
+        {
             var isSaved = await _db.SaveChangesAsync();
             return isSaved > 0;
         }
