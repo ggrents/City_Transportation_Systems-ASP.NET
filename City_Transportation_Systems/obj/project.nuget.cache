@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "d+dw2iFSFmSRWmoZAHGbw+c9zUtLJL94cJ0A6sVERyiBIoW5UP5s7zjAosMhLUSCg87RrAxU+8fgLiS+zE7dOw==",
+  "dgSpecHash": "OFoYDe5Rz49u+Q5aIZizIdj7hi0a7pFLEqxt/oGqaF4EMta1Zv/gLzb7jh7uy2CQ3kCJ8DVDNR7QxkarSL9jIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\Desktop\\dotnet\\City_Transportation_Systems\\City_Transportation_Systems\\City_Transportation_Systems.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

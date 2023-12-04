@@ -16,7 +16,10 @@ namespace City_Transportation_Systems
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();  
             builder.Services.AddDbContext<CtsDbContext>();
-            builder.Services.AddScoped<IBusRepository, BusRepository>();            
+            builder.Services.AddScoped<IBusRepository, BusRepository>();      
+            builder.Services.AddScoped<IRouteRepository, RouteRepository>();      
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             
             var app = builder.Build();
 

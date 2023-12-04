@@ -1,4 +1,5 @@
-﻿using City_Transportation_Systems.Models;
+﻿using City_Transportation_Systems.DTO;
+using City_Transportation_Systems.Models;
 namespace City_Transportation_Systems.Interfaces
 {
     public interface IBusRepository
