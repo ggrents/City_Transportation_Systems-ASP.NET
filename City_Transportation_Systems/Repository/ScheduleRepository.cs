@@ -27,29 +27,39 @@ namespace City_Transportation_Systems.Repository
 
         public async Task<IEnumerable<Schedule>> GetFullScheduleAsync()
         {
-            var schedule = await _db.Schedules.ToListAsync();
+            var schedule = await _db.Schedules.Include(s => s.Route)
+                                              .Include(s => s.Station)
+                                              .ToListAsync();
             return schedule;
         }
 
         public async Task<Schedule> GetScheduleByIdAsync(int id)
         {
-            var schedule = await _db.Schedules.FirstOrDefaultAsync(s => s.Id == id);
+            var schedule = await _db.Schedules
+                                    .Include(s => s.Route)
+                                    .Include(s => s.Station)
+                                    .FirstOrDefaultAsync(s => s.Id == id);
             return schedule;
         }
 
-        public async Task<IEnumerable<Schedule>> GetSchedulesByRoute(int RouteId)
+        public async Task<IEnumerable<Schedule>> GetSchedulesByRouteAsync(int RouteId)
         {
-            var schedules = await _db.Schedules.Where(s => s.RouteId == RouteId).ToListAsync();
+            var schedules = await _db.Schedules.Where(s => s.RouteId == RouteId).Include(s => s.Route)
+                                                                                .Include(s => s.Station)
+                                                                                .ToListAsync();
+            
             return schedules;
         }
 
-        public async Task<IEnumerable<Schedule>> GetSchedulesByStation(int StationId)
+        public async Task<IEnumerable<Schedule>> GetSchedulesByStationAsync(int StationId)
         {
-            var schedules = await _db.Schedules.Where(s => s.StationId == StationId).ToListAsync();
+            var schedules = await _db.Schedules.Where(s => s.StationId == StationId).Include(s => s.Route)
+                                                                                    .Include(s => s.Station)
+                                                                                    .ToListAsync();
             return schedules;
         }
 
-        public async Task<IEnumerable<Schedule>> GetSchedulesByTimeAndRoute(TimeSpan time, int RouteId)
+        public async Task<IEnumerable<Schedule>> GetSchedulesByTimeAndRouteAsync(TimeSpan time, int RouteId)
         {
              var schedules = await _db.Schedules
             .Where(schedule => schedule.RouteId == RouteId && schedule.TimeStamp > time)
@@ -59,7 +69,7 @@ namespace City_Transportation_Systems.Repository
             return schedules;
         }
 
-        public async Task<IEnumerable<Schedule>> GetSchedulesByTimeAndStation(TimeSpan time, int StationId)
+        public async Task<IEnumerable<Schedule>> GetSchedulesByTimeAndStationAsync(TimeSpan time, int StationId)
         {
             var schedules = await _db.Schedules
            .Where(schedule => schedule.StationId == StationId && schedule.TimeStamp > time)

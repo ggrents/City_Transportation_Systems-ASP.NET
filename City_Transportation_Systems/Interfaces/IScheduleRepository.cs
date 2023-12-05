@@ -6,10 +6,10 @@ namespace City_Transportation_Systems.Interfaces
     {
         Task<IEnumerable<Schedule>> GetFullScheduleAsync();
         Task<Schedule> GetScheduleByIdAsync(int id);
-        Task<IEnumerable<Schedule>> GetSchedulesByRoute(int RouteId);
-        Task<IEnumerable<Schedule>> GetSchedulesByStation(int StationId);
-        Task<IEnumerable<Schedule>> GetSchedulesByTimeAndStation(TimeSpan time , int StationId);
-        Task<IEnumerable<Schedule>> GetSchedulesByTimeAndRoute(TimeSpan time , int RouteId);
+        Task<IEnumerable<Schedule>> GetSchedulesByRouteAsync(int RouteId);
+        Task<IEnumerable<Schedule>> GetSchedulesByStationAsync(int StationId);
+        Task<IEnumerable<Schedule>> GetSchedulesByTimeAndStationAsync(TimeSpan time , int StationId);
+        Task<IEnumerable<Schedule>> GetSchedulesByTimeAndRouteAsync(TimeSpan time , int RouteId);
         Task<bool> CreateScheduleAsync(Schedule schedule);
         Task<bool> UpdateScheduleAsync(Schedule schedule);
         Task<bool> DeleteScheduleAsync(Schedule schedule);

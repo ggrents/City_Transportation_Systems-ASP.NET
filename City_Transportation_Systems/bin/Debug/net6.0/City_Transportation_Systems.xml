@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>City_Transportation_Systems</name>
+    </assembly>
+    <members>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.GetStations">
+            <summary>
+            Получить полное расписание.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.GetScheduleById(System.Int32)">
+            <summary>
+            Получить расписание по айди.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.GetScheduleByStationId(System.Int32)">
+            <summary>
+            Получить расписание по айди остановки.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.GetScheduleByRoute(System.Int32)">
+            <summary>
+            Получить расписание по айди маршрута.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.AddSchedule(City_Transportation_Systems.DTO.CreateScheduleDTO)">
+            <summary>
+            Добавить расписание.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.DeleteSchedule(System.Int32)">
+            <summary>
+            Удалить расписание.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.UpdateSchedule(System.Int32,City_Transportation_Systems.DTO.CreateScheduleDTO)">
+            <summary>
+            Обновить расписание по айди.
+            </summary>
+        </member>
+    </members>
+</doc>

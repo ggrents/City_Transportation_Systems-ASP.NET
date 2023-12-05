@@ -73,3 +73,5 @@ C:\Users\user\Desktop\dotnet\City_Transportation_Systems\City_Transportation_Sys
 C:\Users\user\Desktop\dotnet\City_Transportation_Systems\City_Transportation_Systems\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\user\Desktop\dotnet\City_Transportation_Systems\City_Transportation_Systems\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Users\user\Desktop\dotnet\City_Transportation_Systems\City_Transportation_Systems\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\user\Desktop\dotnet\City_Transportation_Systems\City_Transportation_Systems\bin\Debug\net6.0\City_Transportation_Systems.xml
+C:\Users\user\Desktop\dotnet\City_Transportation_Systems\City_Transportation_Systems\obj\Debug\net6.0\City_Transportation_Systems.xml

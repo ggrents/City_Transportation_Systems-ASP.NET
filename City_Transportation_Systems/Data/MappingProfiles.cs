@@ -13,14 +13,22 @@ namespace City_Transportation_Systems.Data
             CreateMap<Bus, BusDTO>();
             CreateMap<BusDTO, Bus>();
             CreateMap<CreateBusDTO, Bus>();
+            
             CreateMap<CreateRouteDTO, Route>();
             CreateMap<RouteDTO, Route>();
             CreateMap<Route, RouteDTO>();
+            
             CreateMap<Driver, DriverDTO>();
             CreateMap<CreateDriverDTO, Driver>();
+
             CreateMap<Station, StationDTO>();
             CreateMap<StationDTO, Station>();
             CreateMap<CreateStationDTO, Station>();
+            
+
+            CreateMap<CreateScheduleDTO, Schedule>();
+            CreateMap<Schedule, ScheduleDTO>();
+            CreateMap<ScheduleDTO, Schedule>();
 
         }
     }
