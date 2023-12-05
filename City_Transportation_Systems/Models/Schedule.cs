@@ -6,6 +6,7 @@ namespace City_Transportation_Systems.Models
     {
         public int Id { get; set; }
 
+
         [Column(TypeName = "time")]
         public TimeSpan TimeStamp { get; set; }
 

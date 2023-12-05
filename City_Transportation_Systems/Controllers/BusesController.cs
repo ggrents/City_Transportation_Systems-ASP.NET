@@ -1,9 +1,10 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning;
+using AutoMapper;
 using City_Transportation_Systems.DTO;
 using City_Transportation_Systems.Interfaces;
 using City_Transportation_Systems.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace City_Transportation_Systems.Controllers
 {
@@ -22,6 +23,7 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpGet]
+        [SwaggerResponse(200, Type = typeof(List<BusDTO>))]
         public async Task<IActionResult> GetBuses()
         {
             var buses = await _busRepository.GetAllBusesAsync();
@@ -29,6 +31,8 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponse(200, Type = typeof(string))]
+        [SwaggerResponse(400)]
         public async Task<IActionResult> AddBus([FromBody] CreateBusDTO busDto)
         {
             var bus = _mapper.Map<Bus>(busDto);
@@ -48,12 +52,15 @@ namespace City_Transportation_Systems.Controllers
 
 
         [HttpDelete("{id}")]
+        [SwaggerResponse(200, Type = typeof(string))]
+        [SwaggerResponse(400)]
+        [SwaggerResponse(404, Type = typeof(string))]
         public async Task<IActionResult> DeleteBus(int id)
         {
             Bus bus = await _busRepository.GetBusByIdAsync(id);
             if (bus == null)
             {
-                return NotFound();
+                return NotFound("Bus not found");
 
             }
             var isDeleted = await _busRepository.DeleteBusAsync(bus);
@@ -69,12 +76,14 @@ namespace City_Transportation_Systems.Controllers
 
 
         [HttpGet("{id}")]
+        [SwaggerResponse(200, Type = typeof(BusDTO))]
+        [SwaggerResponse(404, Type = typeof(string))]
         public async Task<IActionResult> GetBusById(int id)
         {
             var bus = await _busRepository.GetBusByIdAsync(id);
             if (bus == null)
             {
-                return NotFound();
+                return NotFound("Bus not found");
             }
             else
             {
@@ -84,12 +93,14 @@ namespace City_Transportation_Systems.Controllers
 
 
         [HttpGet("route/{id}")]
+        [SwaggerResponse(200, Type = typeof(List<BusDTO>))]
+        [SwaggerResponse(404, Type = typeof(string))]
         public async Task<IActionResult> GetBusByRouteId(int RouteId)
         {
             var buses = await _busRepository.GetBusesByRouteAsync(RouteId);
             if (buses == null)
             {
-                return NotFound();
+                return NotFound("Buses not found");
             }
             else
             {
@@ -98,6 +109,9 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerResponse(200, Type = typeof(CreateBusDTO))]
+        [SwaggerResponse(404, Type = typeof(string))]
+        [SwaggerResponse(400)]
         public async Task<IActionResult> UpdateBus(int id, CreateBusDTO busDto)
         {
             Bus bus = await _busRepository.GetBusByIdAsync(id);

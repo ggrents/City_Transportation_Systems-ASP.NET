@@ -1,9 +1,11 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning;
+using AutoMapper;
 using City_Transportation_Systems.DTO;
 using City_Transportation_Systems.Interfaces;
 using City_Transportation_Systems.Models;
 using City_Transportation_Systems.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using Route = City_Transportation_Systems.Models.Route;
 
 namespace City_Transportation_Systems.Controllers
@@ -15,7 +17,7 @@ namespace City_Transportation_Systems.Controllers
         private IRouteRepository _routeRepository;
         private ILogger _logger;
         private IMapper _mapper;
-        public RoutesController(IRouteRepository routeRepository, ILogger<BusesController> logger, IMapper mapper)
+        public RoutesController(IRouteRepository routeRepository, ILogger<RoutesController> logger, IMapper mapper)
         {
             _routeRepository = routeRepository;
             _logger = logger;
@@ -23,6 +25,7 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpGet]
+        [SwaggerResponse(200, Type = typeof(List<RouteDTO>))]
         public async Task<IActionResult> GetRoutes()
         {
             var routes = await _routeRepository.GetAllRoutesAsync();
@@ -30,12 +33,14 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerResponse(200, Type = typeof(RouteDTO))]
+        [SwaggerResponse(404, Type = typeof(string))]
         public async Task<IActionResult> GetRouteById(int id)
         {
             var route = await _routeRepository.GetRouteByIdAsync(id);
             if (route == null)
             {
-                return NotFound();
+                return NotFound("Route not found");
             }
             else
             {
@@ -44,6 +49,9 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpPost]
+        [SwaggerResponse(200, Type = typeof(string))]
+        [SwaggerResponse(404, Type = typeof(string))]
+        [SwaggerResponse(400)]
         public async Task<IActionResult> AddRoute([FromBody] CreateRouteDTO routeDto)
         {
             var route = _mapper.Map<Route>(routeDto);
@@ -60,14 +68,18 @@ namespace City_Transportation_Systems.Controllers
                 return BadRequest();
             }
         }
+        
 
         [HttpDelete("{id}")]
+        [SwaggerResponse(200, Type = typeof(string))]
+        [SwaggerResponse(404, Type = typeof(string))]
+        [SwaggerResponse(400)]
         public async Task<IActionResult> DeleteRoute(int id)
         {
             var route = await _routeRepository.GetRouteByIdAsync(id);
             if (route == null)
             {
-                return NotFound();
+                return NotFound("Route not found");
 
             }
             var isDeleted = await _routeRepository.DeleteRouteAsync(route);
@@ -82,12 +94,15 @@ namespace City_Transportation_Systems.Controllers
         }
 
         [HttpPut("{id}")]
+        [SwaggerResponse(200, Type = typeof(RouteDTO))]
+        [SwaggerResponse(404, Type = typeof(string))]
+        [SwaggerResponse(400)]
         public async Task<IActionResult> UpdateRoute(RouteDTO routeDto)
         {
             var route = await _routeRepository.GetRouteByIdAsync(routeDto.Id);
             if (route == null)
             {
-                return NotFound();
+                return NotFound("Route not found");
 
             }
 
