@@ -24,6 +24,9 @@ namespace City_Transportation_Systems.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Получить список маршрутов.
+        /// </summary>
         [HttpGet]
         [SwaggerResponse(200, Type = typeof(List<RouteDTO>))]
         public async Task<IActionResult> GetRoutes()
@@ -32,6 +35,9 @@ namespace City_Transportation_Systems.Controllers
             return Ok(_mapper.Map<List<RouteDTO>>(routes));
         }
 
+        /// <summary>
+        /// Получить маршрут по Айди.
+        /// </summary>
         [HttpGet("{id}")]
         [SwaggerResponse(200, Type = typeof(RouteDTO))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -48,6 +54,30 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+
+
+        /// <summary>
+        /// Получить список маршрутов по Айди.
+        /// </summary>
+        [HttpGet("station/{StationId}")]
+        [SwaggerResponse(200, Type = typeof(List<RouteDTO>))]
+        [SwaggerResponse(404, Type = typeof(string))]
+        public async Task<IActionResult> GetRouteByStation(int StationId)
+        {
+            var routes = await _routeRepository.GetRoutesByStation(StationId);
+            if (routes == null)
+            {
+                return NotFound("Route not found");
+            }
+            else
+            {
+                return Ok(_mapper.Map<List<RouteDTO>>(routes));
+            }
+        }
+
+        /// <summary>
+        /// Добавить маршрут.
+        /// </summary>
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -68,8 +98,10 @@ namespace City_Transportation_Systems.Controllers
                 return BadRequest();
             }
         }
-        
 
+        /// <summary>
+        /// Удалить маршрут.
+        /// </summary>
         [HttpDelete("{id}")]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -93,6 +125,9 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Обновить маршрут.
+        /// </summary>
         [HttpPut("{id}")]
         [SwaggerResponse(200, Type = typeof(RouteDTO))]
         [SwaggerResponse(404, Type = typeof(string))]

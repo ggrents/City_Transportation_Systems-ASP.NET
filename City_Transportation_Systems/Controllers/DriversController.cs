@@ -24,7 +24,9 @@ namespace City_Transportation_Systems.Controllers
             _driverRepository = driverRepository;
         }
 
-
+        /// <summary>
+        /// Получить список водителей.
+        /// </summary>
         [HttpGet]
         [SwaggerResponse(200, Type = typeof(List<DriverDTO>))]
         public async Task<IActionResult> GetDrivers()
@@ -33,6 +35,9 @@ namespace City_Transportation_Systems.Controllers
             return Ok(_mapper.Map<IEnumerable<DriverDTO>>(drivers));
         }
 
+        /// <summary>
+        /// Добавить водителя.
+        /// </summary>
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(400)]
@@ -51,6 +56,9 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Удалить водителя.
+        /// </summary>
         [HttpDelete("{id}")]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(400, Type = typeof(string))]
@@ -75,6 +83,10 @@ namespace City_Transportation_Systems.Controllers
         }
 
 
+
+        /// <summary>
+        /// Получить водителя по айди.
+        /// </summary>
         [HttpGet("{id}")]
         [SwaggerResponse(200, Type = typeof(DriverDTO))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -92,7 +104,9 @@ namespace City_Transportation_Systems.Controllers
         }
 
 
-        
+        /// <summary>
+        /// Обновить водителя.
+        /// </summary>
         [HttpPut("{id}")]
         [SwaggerResponse(200, Type = typeof(CreateDriverDTO))]
         [SwaggerResponse(404, Type = typeof(string))]

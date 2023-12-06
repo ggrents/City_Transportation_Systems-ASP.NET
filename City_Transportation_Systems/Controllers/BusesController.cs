@@ -22,6 +22,10 @@ namespace City_Transportation_Systems.Controllers
             _mapper = mapper;
         }
 
+
+        /// <summary>
+        /// Получить список автобусов.
+        /// </summary>
         [HttpGet]
         [SwaggerResponse(200, Type = typeof(List<BusDTO>))]
         public async Task<IActionResult> GetBuses()
@@ -30,6 +34,10 @@ namespace City_Transportation_Systems.Controllers
             return Ok(_mapper.Map<IEnumerable<BusDTO>>(buses));
         }
 
+
+        /// <summary>
+        /// Добавить автобус.
+        /// </summary>
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(400)]
@@ -51,6 +59,9 @@ namespace City_Transportation_Systems.Controllers
         }
 
 
+        /// <summary>
+        /// Удалить автобус.
+        /// </summary>
         [HttpDelete("{id}")]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(400)]
@@ -74,7 +85,9 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Получить автобус по айди.
+        /// </summary>
         [HttpGet("{id}")]
         [SwaggerResponse(200, Type = typeof(BusDTO))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -92,6 +105,9 @@ namespace City_Transportation_Systems.Controllers
         }
 
 
+        /// <summary>
+        /// Получить список автобусов по маршруту.
+        /// </summary>
         [HttpGet("route/{id}")]
         [SwaggerResponse(200, Type = typeof(List<BusDTO>))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -108,6 +124,9 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Обновить автобус.
+        /// </summary>
         [HttpPut("{id}")]
         [SwaggerResponse(200, Type = typeof(CreateBusDTO))]
         [SwaggerResponse(404, Type = typeof(string))]

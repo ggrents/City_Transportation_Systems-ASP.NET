@@ -22,8 +22,10 @@ namespace City_Transportation_Systems.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Получить список остановок.
+        /// </summary>
         [HttpGet]
-        [SwaggerOperation(Summary = "Получить список остановок")]
         [SwaggerResponse(200, Type = typeof(List<StationDTO>))]
         [SwaggerResponse(404, Type = typeof(string))]
         public async Task<IActionResult> GetStations()
@@ -32,6 +34,10 @@ namespace City_Transportation_Systems.Controllers
             return Ok(_mapper.Map<List<StationDTO>>(stations));
         }
 
+
+        /// <summary>
+        /// Получить остановку по айди.
+        /// </summary>
         [HttpGet("{id}")]
         [SwaggerResponse(200, Type = typeof(StationDTO))]
         [SwaggerResponse(404, Type = typeof(string))]
@@ -48,6 +54,28 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить список остановок по маршруту.
+        /// </summary>
+        [HttpGet("route/{RouteId}")]
+        [SwaggerResponse(200, Type = typeof(List<StationDTO>))]
+        [SwaggerResponse(404, Type = typeof(string))]
+        public async Task<IActionResult> GetStationByRouteId(int RouteId)
+        {
+            var stations = await _stationRepository.GetStationsByRoute(RouteId);
+            if (stations == null)
+            {
+                return NotFound("Stations not found");
+            }
+            else
+            {
+                return Ok(_mapper.Map<List<StationDTO>>(stations));
+            }
+        }
+
+        /// <summary>
+        /// Добавить остановку.
+        /// </summary>
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(400)]
@@ -68,6 +96,9 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Удалить остановку.
+        /// </summary>
         [HttpDelete("{id}")]
         [SwaggerResponse(200, Type = typeof(string))]
         [SwaggerResponse(400)]
@@ -91,6 +122,9 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Обновить остановку.
+        /// </summary>
         [HttpPut("{id}")]
         [SwaggerResponse(200, Type = typeof(CreateStationDTO))]
         [SwaggerResponse(400)]
