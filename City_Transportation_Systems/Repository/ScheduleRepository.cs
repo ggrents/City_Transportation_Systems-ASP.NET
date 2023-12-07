@@ -64,6 +64,8 @@ namespace City_Transportation_Systems.Repository
              var schedules = await _db.Schedules
             .Where(schedule => schedule.RouteId == RouteId && schedule.TimeStamp > time)
             .OrderBy(schedule => schedule.TimeStamp)
+            .Include(s=>s.Route)
+            .Include(s=>s.Station)
             .ToListAsync();
 
             return schedules;
@@ -74,6 +76,8 @@ namespace City_Transportation_Systems.Repository
             var schedules = await _db.Schedules
            .Where(schedule => schedule.StationId == StationId && schedule.TimeStamp > time)
            .OrderBy(schedule => schedule.TimeStamp)
+           .Include(s => s.Route)
+           .Include(s => s.Station)
            .ToListAsync();
 
             return schedules;

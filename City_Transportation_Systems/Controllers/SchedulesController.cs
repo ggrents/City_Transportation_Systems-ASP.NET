@@ -149,7 +149,7 @@ namespace City_Transportation_Systems.Controllers
         /// Обновить расписание по айди.
         /// </summary>
         [HttpPut("{id}")]
-        [SwaggerResponse(200, Type = typeof(CreateStationDTO))]
+        [SwaggerResponse(200, Type = typeof(CreateScheduleDTO))]
         [SwaggerResponse(400)]
         [SwaggerResponse(404)]
         public async Task<IActionResult> UpdateSchedule(int id, CreateScheduleDTO ScheduleDto)
@@ -180,5 +180,51 @@ namespace City_Transportation_Systems.Controllers
             }
         }
 
+        /// <summary>
+        /// Получить следующие остановки по времени и маршруту.
+        /// </summary>
+        [HttpGet("time/route/{RouteId}")]
+        [SwaggerResponse(200, Type = typeof(List<ScheduleDTO>))]
+        [SwaggerResponse(400)]
+        [SwaggerResponse(404)]
+        public async Task<IActionResult> GetSchedulesByTimeAndRoute(int RouteId, [FromQuery] string time)
+        {
+            if (!TimeSpan.TryParse(time, out TimeSpan timeSpan))
+            {
+                return BadRequest("Invalid time format");
+            }
+            var schedules = await _scheduleRepository.GetSchedulesByTimeAndRouteAsync(timeSpan, RouteId);
+            if (schedules == null)
+            {
+                return NotFound("Schedules not found");
+            }
+
+
+            return Ok(schedules);
+        }
+
+
+        /// <summary>
+        /// Получить прибывающие маршруты по времени и остановке.
+        /// </summary>
+        [HttpGet("time/station/{StationId}")]
+        [SwaggerResponse(200, Type = typeof(List<ScheduleDTO>))]
+        [SwaggerResponse(400)]
+        [SwaggerResponse(404)]
+        public async Task<IActionResult> GetSchedulesByTimeAndStation(int StationId, [FromQuery] string time)
+        {
+            if (!TimeSpan.TryParse(time, out TimeSpan timeSpan))
+            {
+                return BadRequest("Invalid time format");
+            }
+            var schedules = await _scheduleRepository.GetSchedulesByTimeAndStationAsync(timeSpan, StationId);
+            if (schedules == null)
+            {
+                return NotFound("Schedules not found");
+            }
+
+
+            return Ok(schedules);
+        }
     }
 }

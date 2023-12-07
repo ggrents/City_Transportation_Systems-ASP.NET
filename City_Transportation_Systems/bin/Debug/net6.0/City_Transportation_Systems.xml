@@ -124,6 +124,16 @@
             Обновить расписание по айди.
             </summary>
         </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.GetSchedulesByTimeAndRoute(System.Int32,System.String)">
+            <summary>
+            Получить следующие остановки по времени и маршруту.
+            </summary>
+        </member>
+        <member name="M:City_Transportation_Systems.Controllers.SchedulesController.GetSchedulesByTimeAndStation(System.Int32,System.String)">
+            <summary>
+            Получить прибывающие маршруты по времени и остановке.
+            </summary>
+        </member>
         <member name="M:City_Transportation_Systems.Controllers.StationsController.GetStations">
             <summary>
             Получить список остановок.
