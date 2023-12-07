@@ -61,6 +61,7 @@ namespace City_Transportation_Systems
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(builder => builder.AllowAnyOrigin());
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
