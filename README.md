@@ -42,11 +42,11 @@ Modern technologies and analytics used in CTS allow the city to adapt to growing
 
 2. Get information on future bus arrivals
 <p align="center">
-      <img src="https://voxpopuli.kz/wp-content/uploads/2020/08/10.08.20-01-02-1.jpg?v=1596986035" height = "617" width="1280">
+      <img src="https://sun9-58.userapi.com/impg/CADySA5lCY-bASY7GdEAVrzhSYqA0EeKHEYo9Q/tvBeU-sk4S4.jpg?size=1638x525&quality=96&sign=2d81cf372fb911321b9b20a3e308056b&type=album" height = "517" width="1680">
 </p>
 
 <p align="center">
-      <img src="https://voxpopuli.kz/wp-content/uploads/2020/08/10.08.20-01-02-1.jpg?v=1596986035" height = "617" width="1280">
+      <img src="[https://voxpopuli.kz/wp-content/uploads/2020/08/10.08.20-01-02-1.jpg?v=1596986035](https://sun9-34.userapi.com/impg/DyIY037mqs2C1znkdJk6X6Rdxdccefgz-QvWfQ/ZWKdmGZVKcg.jpg?size=1567x530&quality=96&sign=aa19366934be5c9b45345038fd9d01c4&type=album)" height = "517" width="1580">
 </p>
 ## Contact information 
 
