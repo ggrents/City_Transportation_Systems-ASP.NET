@@ -84,15 +84,20 @@ namespace City_Transportation_Systems.Controllers
             var station = _mapper.Map<Station>(stationDto);
             bool isCreated = await _stationRepository.CreateStationAsync(station);
 
-
-
-            if (isCreated)
+            try
             {
-                return Ok("Succesfully created!");
+                if (isCreated)
+                {
+                    return Ok("Succesfully created!");
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 
@@ -137,16 +142,23 @@ namespace City_Transportation_Systems.Controllers
                 return NotFound("Station not found");
             }
             station.Name = StationDto.Name;
-            
 
-            var isUpdated = await _stationRepository.UpdateStationAsync(station);
-            if (isUpdated)
+            try
             {
-                return Ok(StationDto);
+                var isUpdated = await _stationRepository.UpdateStationAsync(station);
+                if (isUpdated)
+                {
+                    return Ok(StationDto);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }

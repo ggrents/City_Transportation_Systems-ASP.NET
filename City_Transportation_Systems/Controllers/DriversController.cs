@@ -44,16 +44,21 @@ namespace City_Transportation_Systems.Controllers
         public async Task<IActionResult> AddDriver([FromBody] CreateDriverDTO driverDto)
         {
             var driver = _mapper.Map<Driver>(driverDto);
-            bool isCreated = await _driverRepository.CreateDriverAsync(driver);
+            try
+            {
+                bool isCreated = await _driverRepository.CreateDriverAsync(driver);
 
-            if (isCreated)
-            {
-                return Ok("Succesfully created!");
+                if (isCreated)
+                {
+                    return Ok("Succesfully created!");
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
-            {
-                return BadRequest();
-            }
+            catch (Exception ex) 
+            { return BadRequest(ex.Message); }
         }
 
         /// <summary>
@@ -122,6 +127,7 @@ namespace City_Transportation_Systems.Controllers
             driver.Last_name = DriverDto.Last_name;
             driver.BusId = DriverDto.BusId;
 
+            try { 
             var isUpdated = await _driverRepository.UpdateDriverAsync(driver);
             if (isUpdated)
             {
@@ -132,6 +138,10 @@ namespace City_Transportation_Systems.Controllers
                 return BadRequest();
             }
         }
+            catch (Exception ex) 
+            { return BadRequest(ex.Message);
+    }
+}
 
     }
 }

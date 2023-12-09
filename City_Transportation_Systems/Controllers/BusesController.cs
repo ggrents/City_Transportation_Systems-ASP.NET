@@ -43,18 +43,27 @@ namespace City_Transportation_Systems.Controllers
         [SwaggerResponse(400)]
         public async Task<IActionResult> AddBus([FromBody] CreateBusDTO busDto)
         {
+
             var bus = _mapper.Map<Bus>(busDto);
-            bool isCreated = await _busRepository.CreateBusAsync(bus);
-
-
-
-            if (isCreated)
+            try
             {
-                return Ok("Succesfully created!");
+                bool isCreated = await _busRepository.CreateBusAsync(bus);
+
+
+
+                if (isCreated)
+                {
+                    return Ok("Succesfully created!");
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 
@@ -143,14 +152,21 @@ namespace City_Transportation_Systems.Controllers
             bus.Model = busDto.Model;
             bus.RouteId = busDto.RouteId;
 
-            var isUpdated = await _busRepository.UpdateBusAsync(bus);
-            if (isUpdated)
+            try
             {
-                return Ok(busDto);
+                var isUpdated = await _busRepository.UpdateBusAsync(bus);
+                if (isUpdated)
+                {
+                    return Ok(busDto);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }

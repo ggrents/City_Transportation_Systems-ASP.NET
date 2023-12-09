@@ -106,15 +106,23 @@ namespace City_Transportation_Systems.Controllers
                 return BadRequest();
             }
             var schedule = _mapper.Map<Schedule>(scheduleDto);
-            bool isCreated = await _scheduleRepository.CreateScheduleAsync(schedule);
 
-            if (isCreated)
+            try
             {
-                return Ok("Succesfully created!");
+                bool isCreated = await _scheduleRepository.CreateScheduleAsync(schedule);
+
+                if (isCreated)
+                {
+                    return Ok("Succesfully created!");
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 
@@ -168,15 +176,22 @@ namespace City_Transportation_Systems.Controllers
             schedule.RouteId = ScheduleDto.RouteId;
             schedule.StationId = ScheduleDto.StationId;
 
-
-            var isUpdated = await _scheduleRepository.UpdateScheduleAsync(schedule);
-            if (isUpdated)
+            try
             {
-                return Ok(ScheduleDto);
+                var isUpdated = await _scheduleRepository.UpdateScheduleAsync(schedule);
+                if (isUpdated)
+                {
+                    return Ok(ScheduleDto);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 

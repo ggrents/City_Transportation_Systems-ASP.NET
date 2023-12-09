@@ -55,7 +55,6 @@ namespace City_Transportation_Systems.Controllers
         }
 
 
-
         /// <summary>
         /// Получить список маршрутов по Айди.
         /// </summary>
@@ -85,17 +84,25 @@ namespace City_Transportation_Systems.Controllers
         public async Task<IActionResult> AddRoute([FromBody] CreateRouteDTO routeDto)
         {
             var route = _mapper.Map<Route>(routeDto);
-            bool isCreated = await _routeRepository.CreateRouteAsync(route);
-
-
-
-            if (isCreated)
+            try
             {
-                return Ok("Succesfully created!");
+                bool isCreated = await _routeRepository.CreateRouteAsync(route);
+
+
+
+                if (isCreated)
+                {
+                    return Ok("Succesfully created!");
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
 
@@ -140,15 +147,22 @@ namespace City_Transportation_Systems.Controllers
                 return NotFound("Route not found");
 
             }
-
-            var isUpdated = await _routeRepository.UpdateRouteAsync(_mapper.Map<Route>(routeDto));
-            if (isUpdated)
+            try
             {
-                return Ok(routeDto);
+                var isUpdated = await _routeRepository.UpdateRouteAsync(_mapper.Map<Route>(routeDto));
+                if (isUpdated)
+                {
+                    return Ok(routeDto);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
     }
