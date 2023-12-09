@@ -1,5 +1,5 @@
 <p align="center">
-      <img src="https://voxpopuli.kz/wp-content/uploads/2020/08/10.08.20-01-02-1.jpg?v=1596986035" height = "617" width="1280">
+      <img src="https://cdn.nur.kz/images/1120/1507606e0d123760.jpeg" height = "617" width="1280">
 </p>
 
 ## About
@@ -18,11 +18,11 @@ Modern technologies and analytics used in CTS allow the city to adapt to growing
 </p>
 
 <p align="center">
-      <img src="https://sun9-20.userapi.com/impg/T0UGyh9bKhZHNdNWcDLT4fAXT-RcTtC3pFTzCw/5OIi7pd2bME.jpg?size=1515x702&quality=96&sign=d19e6f948a3e40c031815d3a5011415f&type=album" height = "617" width="1280">
+      <img src="https://sun9-56.userapi.com/impg/oJlNoJzKKUbDkjz-xwHcVfqgCDadQoUUD5z3EQ/N4psvW7AH_U.jpg?size=1602x666&quality=96&sign=b88a413ed8491141b52c863d4cee5c5d&type=album" height = "617" width="1280">
 </p>
 
 <p align="center">
-      <img src="https://sun9-20.userapi.com/impg/T0UGyh9bKhZHNdNWcDLT4fAXT-RcTtC3pFTzCw/5OIi7pd2bME.jpg?size=1515x702&quality=96&sign=d19e6f948a3e40c031815d3a5011415f&type=album" height = "617" width="1280">
+      <img src="https://sun9-41.userapi.com/impg/Qd6YZdWxMqigZgqeLLganoCVJF9ZNecQCKGENw/8g7c0rMa3G4.jpg?size=1587x885&quality=96&sign=b558aeb068c3575c6c3a0d3667f0b1dd&type=album" height = "617" width="1280">
 </p>
 
 ## Usage example
@@ -33,11 +33,11 @@ Modern technologies and analytics used in CTS allow the city to adapt to growing
 </p>
 
 <p align="center">
-      <img src="https://sun9-8.userapi.com/impg/NYVTZFu9peQk1A_4TTIlMNCdxCmK7R3A6FMHFw/MKqujgLmfDw.jpg?size=1035x892&quality=96&sign=4c6949fea3da5d93c86849f444b4ac77&type=album" height = "617" width="1280">
+      <img src="https://sun9-8.userapi.com/impg/NYVTZFu9peQk1A_4TTIlMNCdxCmK7R3A6FMHFw/MKqujgLmfDw.jpg?size=1035x892&quality=96&sign=4c6949fea3da5d93c86849f444b4ac77&type=album" height = "917" width="1280">
 </p>
 
 <p align="center">
-      <img src="https://sun9-39.userapi.com/impg/tpVDBV-99AqOZxLWQvOvc_bCdQQeszRDFQKjGQ/ngMcFxDnG7M.jpg?size=1022x922&quality=96&sign=e4e6a2ef102cdd975c284fa735045a63&type=album" height = "617" width="1280">
+      <img src="https://sun9-39.userapi.com/impg/tpVDBV-99AqOZxLWQvOvc_bCdQQeszRDFQKjGQ/ngMcFxDnG7M.jpg?size=1022x922&quality=96&sign=e4e6a2ef102cdd975c284fa735045a63&type=album" height = "917" width="1280">
 </p>
 
 2. Get information on future bus arrivals
