@@ -5,6 +5,7 @@ using City_Transportation_Systems.Repository;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using City_Transportation_Systems.Middleware;
 
 namespace City_Transportation_Systems
 {
@@ -14,11 +15,33 @@ namespace City_Transportation_Systems
         {
             var builder = WebApplication.CreateBuilder(args);
 
-          
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
             {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] { }
+        }
+    });
+
+
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "City Transportation Systems API",
@@ -60,9 +83,10 @@ namespace City_Transportation_Systems
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseMiddleware<TokenMiddleware>();
             app.UseCors(builder => builder.AllowAnyOrigin());
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
