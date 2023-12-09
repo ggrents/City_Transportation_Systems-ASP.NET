@@ -48,6 +48,7 @@ Modern technologies and analytics used in CTS allow the city to adapt to growing
 <p align="center">
       <img src="https://sun26-1.userapi.com/impg/DyIY037mqs2C1znkdJk6X6Rdxdccefgz-QvWfQ/ZWKdmGZVKcg.jpg?size=1567x530&quality=96&sign=aa19366934be5c9b45345038fd9d01c4&type=album" height = "517" width="1580">
 </p>
+
 ## Contact information 
 
 You can contact me for support, feedback and more information :
