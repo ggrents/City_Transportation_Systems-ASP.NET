@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\City_Transportation_Systems.props" />
-</Project>
