@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о маршруте</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="routeHeader">Информация о маршруте</h1>
+    </header>
+
+    <main>
+
+        <table id="scheduleTable">
+            <thead>
+                <tr>
+                    <th>Остановка</th>
+                    <th>Время прибытия</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <script>
+            // Получаем параметры из URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const routeId = urlParams.get('routeId');
+            const num = urlParams.get('routeNumber');
+            document.getElementById('routeHeader').textContent += ` ${num}`;
+            const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+            fetch(`https://localhost:7217/api/schedules/time/route/${routeId}?time=${currentTime}`, {
+                headers: {
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFydGVtIEdyZW50cyIsImlhdCI6MTMxMDY4Mjl9.qtupxmf-m8ojHFsaodl7s3S1pnx3vn-FWmUofVMppVE'
+                }
+            })
+                .then(response => response.json())
+                .then(scheduleData => {
+                    console.log('Расписание для маршрута с идентификатором', routeId, ':', scheduleData);
+
+                    const tableBody = document.querySelector('#scheduleTable tbody');
+
+                    scheduleData.forEach(scheduleItem => {
+                        const row = document.createElement('tr');
+                        const routeNumberCell = document.createElement('td');
+                        routeNumberCell.textContent = scheduleItem.station.name;
+                        const timeToArrivalCell = document.createElement('td');
+                        timeToArrivalCell.textContent = scheduleItem.timeStamp;
+
+                        row.appendChild(routeNumberCell);
+                        row.appendChild(timeToArrivalCell);
+
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Ошибка при получении расписания:', error));
+        </script>
+    </main>
+
+</body>
+</html>

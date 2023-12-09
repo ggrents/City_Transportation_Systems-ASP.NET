@@ -6,87 +6,46 @@
     <title>Система контроля общественного транспорта</title>
     <style>
         body {
-            background-image: url('путь/к/вашей/картинке.jpg'); /* Замените путь к изображению */
-            background-size: cover;
-            background-position: center;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background-color: #f0f0f0;
         }
 
-        h1 {
-            color: white;
+        header {
+            background-color: #333;
+            color: #fff;
             text-align: center;
-        }
-
-        .select-container {
-            display: flex;
-        }
-
-        select {
             padding: 20px;
-            margin: 20px;
-            font-size: 24px;
-            width: 80%;
-            max-width: 400px;
+        }
+
+        main {
+            text-align: center;
+            padding: 50px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 90px;
+            padding: 25px;
+            font-size: 34px;
+            text-decoration: none;
+            color: #333;
+            background-color: #ddd;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Система контроля общественного транспорта</h1>
 
-    <div class="select-container">
-        <label for="routeSelect">Выберите маршрут:</label>
-        <select id="routeSelect"></select>
+    <header>
+        <h1>Система контроля общественного транспорта</h1>
+    </header>
 
-        <label for="stationSelect">Выберите остановку:</label>
-        <select id="stationSelect"></select>
-    </div>
+    <main>
+        <a href="routes.html">Маршруты</a>
+        <a href="stations.html">Остановки</a>
+    </main>
 
-    <script>
-        // Загрузка опций для первого выпадающего списка (маршруты)
-        const routeSelect = document.getElementById('routeSelect');
-
-        // Получение данных с сервера
-        fetch('https://localhost:7217/api/routes')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(route => {
-                    const option = document.createElement('option');
-                    option.value = route.id;
-                    option.text = route.number;
-                    routeSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Ошибка при получении данных:', error));
-
-        // Загрузка опций для второго выпадающего списка (остановки)
-        document.getElementById('routeSelect').addEventListener('change', function () {
-            const selectedRouteId = this.value;
-
-            // Имитация запроса к серверу для получения остановок по выбранному маршруту
-            // Замените этот блок кода на реальный запрос к вашему серверу
-            const stationSelect = document.getElementById('stationSelect');
-            stationSelect.innerHTML = ''; // Очистка текущих опций
-
-            // Ваш код для загрузки данных об остановках по выбранному маршруту
-            // Например, fetch(`https://localhost:7217/api/stations/${selectedRouteId}`)
-            // .then(response => response.json())
-            // .then(stationsData => {
-            //     stationsData.forEach(station => {
-            //         const option = document.createElement('option');
-            //         option.value = station.id;
-            //         option.text = station.name;
-            //         stationSelect.appendChild(option);
-            //     });
-            // })
-            // .catch(error => console.error('Ошибка при получении данных об остановках:', error));
-        });
-    </script>
 </body>
 </html>
