@@ -46,7 +46,7 @@ Modern technologies and analytics used in CTS allow the city to adapt to growing
 </p>
 
 <p align="center">
-      <img src="[https://voxpopuli.kz/wp-content/uploads/2020/08/10.08.20-01-02-1.jpg?v=1596986035](https://sun9-34.userapi.com/impg/DyIY037mqs2C1znkdJk6X6Rdxdccefgz-QvWfQ/ZWKdmGZVKcg.jpg?size=1567x530&quality=96&sign=aa19366934be5c9b45345038fd9d01c4&type=album)" height = "517" width="1580">
+      <img src="https://sun26-1.userapi.com/impg/DyIY037mqs2C1znkdJk6X6Rdxdccefgz-QvWfQ/ZWKdmGZVKcg.jpg?size=1567x530&quality=96&sign=aa19366934be5c9b45345038fd9d01c4&type=album" height = "517" width="1580">
 </p>
 ## Contact information 
 
